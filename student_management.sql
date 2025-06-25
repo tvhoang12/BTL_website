@@ -1,11 +1,19 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3300
--- Generation Time: Jun 25, 2025 at 01:13 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Xóa database nếu đã tồn tại
+DROP DATABASE IF EXISTS student_management;
+
+-- Tạo mới database
+CREATE DATABASE student_management;
+USE student_management;
+
+-- Tắt kiểm tra khóa ngoại để tránh lỗi khi xóa bảng
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Xóa toàn bộ các bảng hiện có
+-- Chạy đoạn này nếu cần (nếu không dùng DROP DATABASE ở trên)
+-- (Tùy chọn): Có thể viết thêm nếu bạn không dùng DROP DATABASE
+
+-- Bật lại kiểm tra khóa ngoại
+SET FOREIGN_KEY_CHECKS = 1;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,6 +34,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `companies`
 --
+DROP TABLE IF EXISTS `companies`;
 
 CREATE TABLE `companies` (
   `company_id` int(11) NOT NULL,
@@ -51,6 +60,7 @@ INSERT INTO `companies` (`company_id`, `company_name`, `cpa_needed`, `required_s
 --
 -- Table structure for table `grades`
 --
+DROP TABLE IF EXISTS `grades`;
 
 CREATE TABLE `grades` (
   `id` int(11) NOT NULL,
@@ -623,7 +633,7 @@ INSERT INTO `grades` (`id`, `user_id`, `subject_id`, `semester_id`, `score`) VAL
 --
 -- Table structure for table `semesters`
 --
-
+DROP TABLE IF EXISTS `semesters`;
 CREATE TABLE `semesters` (
   `semester_id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
@@ -645,6 +655,7 @@ INSERT INTO `semesters` (`semester_id`, `name`, `year`) VALUES
 --
 -- Table structure for table `subjects`
 --
+DROP TABLE IF EXISTS `subjects`;
 
 CREATE TABLE `subjects` (
   `subject_id` varchar(10) NOT NULL,
@@ -671,7 +682,7 @@ INSERT INTO `subjects` (`subject_id`, `subject_name`, `credit`) VALUES
 --
 -- Table structure for table `users`
 --
-
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` varchar(10) NOT NULL,
   `full_name` varchar(100) DEFAULT NULL,
